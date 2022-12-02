@@ -42,13 +42,15 @@
       </ul>
 
       <div class="filters-content">
-        <div class="row grid d-flex">
+        <div class="row grid d-flex" >
+
+
 
             @foreach($product as $products)
 
           <div class="col-sm-6 col-lg-4 all {{$products->category}}">
-            <div class="box">
-
+            <div class="box" style="position: relative;">
+                <img src="{{asset('home/images/c1.png')}}" alt="" style="position: absolute;left: 0;top: 0;display: block;height: 200px;width: 200px;background: url(TRbanner.gif) no-repeat;text-indent: -999em;text-decoration: none; margin-left:-35px;margin-top:-30px;">
               <div>
                 <div class="img-box">
                   <img src="product/{{$products->image}}" alt="">
