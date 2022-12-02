@@ -10,7 +10,7 @@
               </div>
               <div class="detail-box">
                 <h5>
-                  Tasty Thursdays
+                  Christmas Sale!
                 </h5>
                 <h6>
                   Up to <span>20%</span> Off

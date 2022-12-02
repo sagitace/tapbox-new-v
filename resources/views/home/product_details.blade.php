@@ -62,6 +62,9 @@
 
 
         <div class="container d-flex justify-content-center align-items-center" style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; margin-top: 100px; margin-bottom: 100px; position:relative;">
+
+        <img src="{{asset('home/images/c1.png')}}" alt="" style="position: absolute;left: 0;top: 0;display: block;height: 200px;width: 200px;background: url(TRbanner.gif) no-repeat;text-indent: -999em;text-decoration: none; margin-left:-40px;margin-top:-40px;">
+
         <img src="{{asset('home/images/icons8-gift.gif')}}" alt="" style="position: absolute;right: 0;top: 0;display: block;height: 100px;width: 100px;background: url(TRbanner.gif) no-repeat;text-indent: -999em;text-decoration: none;">
             <diV class="row">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
@@ -71,7 +74,7 @@
                 </div>
                 <div class="col-lg-8 d-flex justify-content-center align-items-center">
                     <div class="detail-box">
-                  <h5 style="padding-bottom: 20px; font-weight:bold;">{{$product->title}}</h5>
+                  <h4 style="padding-bottom: 20px; font-weight:bold;">{{$product->title}}</h4>
 
                   <h6 style="padding-bottom: 15px;"><b>Product Category:</b> {{$product->category}}</h6>
 
