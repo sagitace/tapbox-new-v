@@ -8,7 +8,7 @@
 <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
   <!-- Site Metas -->
   <meta name="keywords" content="" />
   <meta name="description" content="" />
@@ -279,7 +279,7 @@ ul .listitem:last-child {
                 </div>
             </div>
         </div>
-<p style="color:grey; font-size:18px; margin-bottom:-25px;" class="cc">Proceed to order</p>
+        <p style="color:grey; font-size:18px; margin-bottom:-25px;" class="cc">Proceed to order</p>
         <div>
 
             @if($cart_total !== 0)
