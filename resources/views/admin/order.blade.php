@@ -92,6 +92,9 @@
 
                     <p style="color:green">Delivered</p>
 
+                    @elseif($order->delivery_status=='cancelled')
+                    <p style="color:red">Cancelled</p>
+
                     @endif
                 </td>
                 <td>

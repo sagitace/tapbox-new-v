@@ -131,10 +131,6 @@ ul .listitem:last-child {
     align-items: flex-start;
 }
 
-.foods-count {
-    margin-bottom: 1.5rem;
-}
-
 .foods-count::before {
     content: "Count: ";
     color: black;
@@ -143,19 +139,20 @@ ul .listitem:last-child {
 .checkout a {
     padding: 0.5rem;
     color: white;
-    background: #aa573c;
+    background: #ffbe33;
     border-radius: 1rem;
     text-align: center;
-    opacity: 0.7;
+    opacity: 1;
     width: 100%;
     font-size: 20px;
-  justify-content: center;
+    justify-content: center;
     align-items: center;
     display: flex;
+    font-weight: bold;
 }
 
 .checkout a:hover {
-    opacity: 1;
+    opacity: 0.8;
     cursor: pointer;
 }
 
@@ -265,18 +262,35 @@ ul .listitem:last-child {
         <div>
             <div class="countprice">
                 <div class="foods-count">
-                    <span>{{$totalquantity}} items</span>
+                    <span style="font-weight: bold;">{{$totalquantity}} item/s</span>
                 </div>
                 <div class="total_price">
-                Total price: ₱{{$totalprice}}
+                Total price: <span style="font-weight: bold;">₱{{$totalprice}}</span>
+                </div>
+                <div>
+                    @if($totalquantity > 2)
+                    Shipping fee: <span style="font-weight:bold; ">Free</span>
+                    @elseif($totalquantity == 0)
+                    <span style="font-weight:bold; display:none;">No item in cart</span>
+                    @else
+                    Shipping fee: <span style="font-weight:bold; ">₱20</span>
+                    <?php $totalprice=$totalprice + 20; ?>
+                    @endif
                 </div>
             </div>
         </div>
-<p style="color:grey; font-size:18px;" class="cc">Proceed to order</p>
+<p style="color:grey; font-size:18px; margin-bottom:-25px;" class="cc">Proceed to order</p>
         <div>
 
-            <a href="{{url('cash_order')}}" style="margin-bottom:5px;" onclick="COD(event)">Cash On Delivery</a>
-            <a href="{{url('stripe', $totalprice)}}" onclick="CARD(event)">Pay Using Card</a>
+            @if($cart_total !== 0)
+                 <a href="{{url('cash_order')}}" style="margin-bottom:5px; z-index:1;" onclick="COD(event)">Cash On Delivery</a>
+            <a href="{{url('stripe', $totalprice)}}" onclick="CARD(event)" style="z-index:1; ">Pay Using Card</a>
+
+            @else
+                <a href="{{url('show_cart')}}" style="margin-bottom:5px; z-index:1;" onclick="NOT(event)">Cash On Delivery</a>
+                <a href="{{url('show_cart')}}" onclick="NOT(event)" style="z-index:1;">Pay Using Card</a>
+
+            @endif
         </div>
 
 
@@ -328,6 +342,27 @@ ul .listitem:last-child {
     }
 </script>
 
+
+<script>
+    function NOT(ev) {
+      ev.preventDefault();
+      var urlToRedirect = ev.currentTarget.getAttribute('href');
+      console.log(urlToRedirect);
+      swal({
+          title: "Your cart is empty!",
+          text: "Please add items to your cart!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willCancel) => {
+          if (willCancel) {
+              window.location.href = urlToRedirect;
+          }
+
+      });
+  }
+</script>
 
 <script>
       function CARD(ev) {

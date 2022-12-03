@@ -131,7 +131,7 @@ class AdminController extends Controller
         $order->delivery_status='delivered';
         $order->payment_status='Paid';
         $order->save();
-        return redirect()->back()->with('message','Ordzer delivered successfully!');
+        return redirect()->back()->with('message','Order delivered successfully!');
     }
 
     public function print($id){

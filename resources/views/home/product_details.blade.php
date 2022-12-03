@@ -40,6 +40,12 @@
     .btn:hover{
         opacity:0.8;
     }
+    @media (max-width: 575px) {
+        .title{
+            text-align: center;
+        }
+    }
+
   </style>
 </head>
 
@@ -74,7 +80,7 @@
                 </div>
                 <div class="col-lg-8 d-flex justify-content-center align-items-center">
                     <div class="detail-box">
-                  <h4 style="padding-bottom: 20px; font-weight:bold;">{{$product->title}}</h4>
+                  <h3 style="padding-bottom: 20px; font-weight:bold;" class="title">{{$product->title}}</h3>
 
                   <h6 style="padding-bottom: 15px;"><b>Product Category:</b> {{$product->category}}</h6>
 

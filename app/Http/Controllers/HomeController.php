@@ -47,7 +47,12 @@ class HomeController extends Controller
             $total_revenue=0;
 
             foreach($order as $order){
-                $total_revenue=$total_revenue+$order->price;
+                if($order->delivery_status == 'delivered'){
+                    $total_revenue=$total_revenue+$order->price;
+                }
+                else{
+                    $total_revenue=$total_revenue+0;
+                }
             }
 
             $total_delivered=order::where('delivery_status','=','delivered')->get()->count();
@@ -144,7 +149,10 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
             $cart=cart::where('user_id','=',$id)->get();
-            return view('home.showcart',compact('cart'));
+            $cart_total = cart::where('user_id',Auth::id())->count();
+            $order_total = order::where('user_id',Auth::id())->count();
+
+            return view('home.showcart',compact('cart', 'cart_total'));
         }
             else{
                 return redirect('login');
@@ -182,20 +190,28 @@ class HomeController extends Controller
             $order->Product_id=$data->Product_id;
             $order->quantity=$data->quantity;
 
+
+
             $order->payment_status='cash on delivery';
             $order->delivery_status='processing';
 
             $product->quantity=$product->quantity - $data->quantity;
 
+if($data->quantity < 3){
+                $order->price = $order->price + 20;
+                $order->save();
+            }
+            else{
+                $order->save();
+            }
+
             $product->save();
-            $order->save();
 
 
             $cart_id=$data->id;
             $cart=cart::find($cart_id);
             $cart->delete();
         }
-
         Alert::success('Successful','Order placed successfully. We will connect with you soon!');
 
         return redirect()->back();
