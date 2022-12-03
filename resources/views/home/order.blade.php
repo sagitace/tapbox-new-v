@@ -218,6 +218,12 @@ ul .listitem:last-child {
                     </div>
                     <div>
                         {{$order->delivery_status}}
+                        
+                    </div>
+                    @if($order < 3)
+
+                    <div>
+
                     </div>
                     <div>
                         @if($order->delivery_status == 'processing')
