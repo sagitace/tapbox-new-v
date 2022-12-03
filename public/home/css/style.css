@@ -1039,5 +1039,21 @@ a:focus {
     border: solid #ffbe33;
 }
 
+.c2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    height: 150px;
+    width: 150px;
+    margin-top: 20px;
+}
+
+@media(max-width:500px) {
+    .c2 {
+        display: none;
+    }
+}
+
 
 /*# sourceMappingURL=style.css.map */
