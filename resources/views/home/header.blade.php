@@ -23,15 +23,14 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{url('show_order')}}">Order</a>
               </li>
-              <div class="user_option">
 
-              <a class="cart_link" href="{{url('show_cart')}}">
-
-              <img src="https://img.icons8.com/ios-glyphs/20/FFFFFF/shopping-cart--v1.png"/>
-              <span style="font-weight:bold; color: white; font-size:12px;">{{$cart_total}}</span>
+              <li>
+                 <a class="cart_link" href="{{url('show_cart')}}">
+              <img src="https://img.icons8.com/ios-glyphs/20/FFFFFF/shopping-cart--v1.png" style="margin-top:5px;"/>
+              <span style="font-weight:bold; color: white; font-size:12px; margin-left:-3px;">{{$cart_total}}</span>
               </a>
+              </li>
 
-            </div>
             @if (Route::has('login'))
 
             @auth
@@ -39,7 +38,7 @@
                 <x-app-layout></x-app-layout>
             </li>
             @else
-            <li class="nav-item">
+            <li class="nav-item ml-2">
                 <a href="{{ route('login') }}" class="btn btn-primary" id="logincss">
                         Login
                 </a>

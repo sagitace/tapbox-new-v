@@ -33,7 +33,7 @@
 
             @foreach($category as $category)
 
-            <li data-filter=".{{$category->category_name}}" style="position:relative; z-index:1000; border:1px solid black;">{{$category->category_name}}</li>
+            <li data-filter=".{{$category->category_name}}" style="position:relative; z-index:1000;">{{$category->category_name}}</li>
 
             @endforeach
         </ul>
