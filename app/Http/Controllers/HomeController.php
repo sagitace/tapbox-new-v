@@ -58,7 +58,6 @@ class HomeController extends Controller
             $total_delivered=order::where('delivery_status','=','delivered')->get()->count();
 
             $total_processing=order::where('delivery_status','=','processing')->get()->count();
-
             return view('admin.home', compact('total_product','total_order','total_user','total_revenue', 'total_delivered','total_processing'));
         }
         else{
@@ -218,7 +217,9 @@ if($data->quantity < 3){
     }
 
     public function stripe($totalprice){
-        return view('home.stripe', compact('totalprice'));
+        $cart_total = cart::where('user_id',Auth::id())->count();
+
+        return view('home.stripe', compact('totalprice', 'cart_total'));
     }
 
     public function stripePost(Request $request, $totalprice)
@@ -318,6 +319,16 @@ if($data->quantity < 3){
         $cart_total = cart::where('user_id',Auth::id())->count();
         $product=product::where('title','LIKE',"%$search%")->orWhere('Category','LIKE',"%$search%")->paginate(6);
         return view('home.all_product', compact('product','category','cart_total'));
+    }
+
+    public function book_now(){
+        if(Auth::id()){
+            Alert::success('Successfully Booked!','We will connect with you soon!');
+            return redirect()->back();
+        }
+        else{
+            return redirect('login');
+        }
     }
 
 }

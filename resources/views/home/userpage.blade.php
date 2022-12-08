@@ -97,6 +97,28 @@
         };
     </script>
 
+  <script>
+    function Confirm() {
+      ev.preventDefault();
+      var urlToRedirect = ev.currentTarget.getAttribute('href');
+      console.log(urlToRedirect);
+      swal({
+          title: "Are you sure to book?",
+          text: "You have to contact us if you want to cancel this book. Thank You Tapbarkada!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willCancel) => {
+          if (willCancel) {
+              window.location.href = urlToRedirect;
+          }
+
+      });
+  }
+</script>
+
+
   <!-- jQery -->
   <script src="home/js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->

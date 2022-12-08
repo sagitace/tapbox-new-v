@@ -37,8 +37,8 @@
       <img src="{{asset('home/images/hero-bg.jpg')}}" alt="">
     </div>
     @include('home.header') <!-- include header file -->
-<!-- slider section -->
-@include('home.slider')
+    <!-- slider section -->
+    @include('home.slider')
     <!-- end slider section -->
   </div>
 

@@ -85,3 +85,6 @@ route::get('/product_search', [HomeController::class,'product_search']);
 route::get('/products', [HomeController::class,'products']);
 
 route::get('/search_product', [HomeController::class,'search_product']);
+
+route::get('/book_now', [HomeController::class,'book_now']);
+

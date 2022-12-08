@@ -182,7 +182,7 @@ ul .listitem:last-child {
   <div class="hero_area">
     <div class="bg-box">
       <img src="{{asset('home/images/crop.jpg')}}" style="height: 80px;" alt="">
-</div>
+    </div>
 
             <header class="header_section">
                 <div class="container">
