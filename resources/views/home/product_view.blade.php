@@ -13,7 +13,7 @@
                 </form>
             </div>
 
-      </div>
+        </div>
 
         @if(session()->has('message'))
 
