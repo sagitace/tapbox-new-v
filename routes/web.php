@@ -60,7 +60,10 @@ route::post('/send_user_email/{id}', [AdminController::class,'send_user_email'])
 
 route::get('/search', [AdminController::class,'searchdata']);
 
+route::get('/customer', [AdminController::class,'customer']);
 
+
+// Home Controller
 
 route::get('/product_details/{id}', [HomeController::class,'product_details']);
 
@@ -85,3 +88,6 @@ route::get('/product_search', [HomeController::class,'product_search']);
 route::get('/products', [HomeController::class,'products']);
 
 route::get('/search_product', [HomeController::class,'search_product']);
+
+route::get('/book_now', [HomeController::class,'book_now']);
+

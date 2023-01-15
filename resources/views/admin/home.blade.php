@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+
   @include('admin.css')
   </head>
   <body>
@@ -16,5 +17,7 @@
     <!-- plugins:js -->
    @include('admin.script')
     <!-- End custom js for this page -->
+
+
   </body>
 </html>

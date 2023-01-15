@@ -28,24 +28,83 @@
 
 
 
-    <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
+        <ul class="filters_menu">
+            <li class="active" data-filter="*">All</li>
+            @foreach($category as $category)
 
-        @foreach($category as $category)
+            @if($category->category_name == "Iced_Coffee")
+            <li data-filter=".{{$category->category_name}}">Iced Coffee</li>
+            @else
+            <li data-filter=".{{$category->category_name}}">{{$category->category_name}}</li>
+            @endif
 
-        <li data-filter=".{{$category->category_name}}">{{$category->category_name}}</li>
+            @endforeach
+          </ul>
 
-        @endforeach
-      </ul>
 
       <div class="filters-content">
         <div class="row grid d-flex">
 
             @foreach($product as $products)
+            @if($products->quantity == "Available")
+<a href="{{url('product_details',$products->id)}}" style="z-index: 1;" class="btn3">
 
           <div class="col-sm-6 col-lg-4 all {{$products->category}}">
-            <div class="box" style="position: relative;">
-            <img src="{{asset('home/images/c1.png')}}" alt="" style="position: absolute;left: 0;top: 0;display: block;height: 200px;width: 200px;background: url(TRbanner.gif) no-repeat;text-indent: -999em;text-decoration: none; margin-left:-35px;margin-top:-30px;">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img style="height: 170px; width:150px;" src="product/{{$products->image}}" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5 class="mt-2" style="font-weight: bold;">
+                    {{$products->title}}
+                  </h5>
+
+                  <div class="options">
+
+                @if($products->discount_price!=null)
+
+                <div style="display:flex;" class="mt-2">
+                    <h6 style="margin-right:5px; font-weight:bold;">
+                        ₱{{$products->discount_price}}
+                    </h6>
+
+                    <h6 style="text-decoration: line-through; " class="text-danger">
+                        ₱{{$products->price}}
+                    </h6>
+                    <?php $discount =(int) (round(($products->discount_price / $products->price) * 100)) - 100?>
+                    <h6 class="text-light" style=""> <span style="font-weight: bold;">&nbsp;&nbsp;{{$discount}}</span>% </h6>
+                </div>
+
+                <?php $saved = $products->price - $products->discount_price ?>
+                <h6 class="text-success" style="font-size: 20px; font-weight: bold;">&nbsp; Save ₱{{$saved}} now!</h6>
+
+                @else
+
+                    <h6 style="font-weight:bold;">
+                        ₱{{$products->price}}
+                    </h6>
+
+                @endif
+
+                  </div>
+            <div style="margin: 15px 0;">
+
+                <h6 >Product is <span style="font-weight: bold;"class="text-warning">{{$products->quantity}}</span>!</h6>
+
+            </div>
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+</a>
+
+          @else
+          <div class="col-sm-6 col-lg-4 all">
+            <div class="box">
               <div>
                 <div class="img-box">
                   <img style="height: 170px; width:150px;" src="product/{{$products->image}}" alt="">
@@ -54,9 +113,6 @@
                   <h5>
                     {{$products->title}}
                   </h5>
-                  <p>
-                  {{$products->description}}
-                  </p>
                   <div class="options">
 
                 @if($products->discount_price!=null)
@@ -79,24 +135,20 @@
 
                 @endif
 
-<a href="{{url('product_details',$products->id)}}" style="margin-right: 5px; font-size:15px; font-weight:bold; padding-left:5px;padding-right:5px;">View</a>
                   </div>
             <div style="margin: 10px 0">
-                <h6>Available Quantity: <span style="font-weight: bold;">{{$products->quantity}}</span></h6>
-            </div>
 
-            <div style="display: flex; justify-content:center; align-items:center; margin-top: 18px; margin-bottom:-10px;">
-                <form action="{{url('add_cart',$products->id)}}" method="POST" style="display:flex;">
-                @csrf
-                <input type="number" name="quantity" value="0" min="1" max="{{$products->quantity}}" style="width: 60px; color:black;border-radius: 5px 0 0 5px; border:yellow;">
-                <button type="submit" class="btn btn-success" style="border-radius: 0 5px 5px 0;">Add To Cart</button>
-                </form>
+                <h5 class="text-danger" style="font-size: 15px;">OUT OF STOCK!</h5>
+
             </div>
                 </div>
-
               </div>
             </div>
           </div>
+
+          @endif
+
+
         @endforeach
 
     </div>

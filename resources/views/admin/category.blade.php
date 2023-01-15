@@ -10,10 +10,17 @@
     }
     .h2_font{
         font-size: 40px;
-        padding-bottom: 40px;
+
     }
     .input_color{
         color:black;
+    }
+
+    .row{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
     }
     .center{
         margin: auto;
@@ -50,36 +57,57 @@
             @endif
 
             <div class="div_center">
-                <h2 class="h2_font">Add Category</h2>
+                <h2 class="h2_font">Product Categories</h2>
 
-                <form action="{{url('/add_category')}}" method="POST">
 
-                    @csrf
-
-                    <input type="text" name="category" placeholder="Write category name" class="input_color">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Add Category">
-                </form>
             </div>
 
-            <table class="center">
-                <tr>
-                    <td>Category Name</td>
-                    <td>Action</td>
-                </tr>
+<div class="container">
+            <div class="row">
+                <div class="col-lg-6 mt-4 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title" style=" font-weight: bold;">Add Category</h4>
+                        <p class="card-description">
+                            <form action="{{url('/add_category')}}" method="POST" style="display: flex;">
+                            @csrf
+                            <input type="text" name="category" placeholder="Write category name" class="input_color" style=" color:black;border-radius: 5px 0 0 5px; ">
+                            <input type="submit" class="btn btn-primary bg-primary" name="submit" value="Add" style="border-radius: 0 5px 5px 0; font-weight:bold; color:white;">
+                        </form>
+                        </p>
+                        <div class="table-responsive mt-3">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Category</th>
+                                <th>Created</th>
+                                <th>Delete</th>
+                              </tr>
+                            </thead>
+                            <tbody>
 
-                @foreach($data as $data)
+                                @foreach($data as $data)
 
-                <tr>
-                    <td>{{$data->category_name}}</td>
+                                <tr>
+                                    <td>{{$data->id}}</td>
+                                    <td>{{$data->category_name}}</td>
+                                    <td>{{$data->created_at}}</td>
+                                    <td>
+                                        <a onclick="return confirm('Are you sure to delete this category?')" href="{{url('delete_category',$data->id)}}" class="btn btn-danger">Delete</a>
+                                    </td>
 
-                    <td>
-                        <a onclick="return confirm('Are you sure to delete this category?')" href="{{url('delete_category',$data->id)}}" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
+                                </tr>
 
-                @endforeach
-
-            </table>
+                                @endforeach
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+</div>
 
           </div>
         </div>

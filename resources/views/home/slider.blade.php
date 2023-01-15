@@ -13,9 +13,12 @@
                      TAPBOX is a home based food and delivery business that offers a variety of Silog meals and snacks that will suroly satisfy your appetite while not risking, but saving much of your money.
                     </p>
                     <div class="btn-box">
-                      <a href="{{url('products')}}" class="btn1">
+                <div>
+                  <a href="{{url('products')}}" class="btn1">
                         Order Now
                       </a>
+                </div>
+
                     </div>
                   </div>
                 </div>
@@ -34,9 +37,11 @@
                       Indulge with our <b>SAVORY</b>, <b>TASTY</b>, and <b>BUDGETARIAN Meals</b> just for you! Because we want you to satisfy your Filipino-inspired cravings, that's why we serve it right through your tummies.
                     </p>
                     <div class="btn-box">
-                      <a href="{{url('products')}}" class="btn1">
-                        Order Now
-                      </a>
+                      <div>
+                        <a href="{{url('products')}}" class="btn1">
+                              Order Now
+                            </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -55,9 +60,11 @@
                       Look some of our valued customers having their favorite milktea from us, we are delighted to offer and serve you all and we hope and definitely sure that you've enjoyed the flovorful taste upon sip of our TAPBox BOBBAtea Series.
                     </p>
                     <div class="btn-box">
-                      <a href="{{url('products')}}" class="btn1">
-                        Order Now
-                      </a>
+                      <div>
+                        <a href="{{url('products')}}" class="btn1">
+                              Order Now
+                            </a>
+                      </div>
                     </div>
                   </div>
                 </div>

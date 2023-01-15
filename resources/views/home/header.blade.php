@@ -12,22 +12,25 @@
             <span class=""> </span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  mx-auto ">
+          <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
+            <ul class="navbar-nav  mx-auto" style="gap: 5px;">
               <li class="nav-item">
                 <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
               </li>
+
+              <!--
               <li class="nav-item">
-                <a class="nav-link" href="{{url('products')}}">Menu</a>
+                <a class="nav-link" href="">Menu</a>
               </li>
+            -->
               <li class="nav-item">
                 <a class="nav-link" href="{{url('show_order')}}">Order</a>
               </li>
 
               <li>
-                 <a class="cart_link" href="{{url('show_cart')}}">
+                 <a class="cart_link d-flex" href="{{url('show_cart')}}">
               <img src="https://img.icons8.com/ios-glyphs/20/FFFFFF/shopping-cart--v1.png" style="margin-top:5px;"/>
-              <span style="font-weight:bold; color: white; font-size:12px; margin-left:-3px;">{{$cart_total}}</span>
+              <span style="font-weight:bold; color: white; font-size:12px; ">{{$cart_total}}</span>
               </a>
               </li>
 

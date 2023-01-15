@@ -31,18 +31,6 @@
   <!-- responsive style -->
   <link href="{{asset('home/css/responsive.css')}}" rel="stylesheet" />
 
-<style>
-
-.gone1{
-    opacity:0.5;
-}
-    @media(max-width: 1000px){
-        .gone1{
-            opacity: 0;
-        }
-    }
-
-</style>
 
 </head>
 
@@ -52,8 +40,7 @@
 @include('sweetalert::alert')
   <div class="hero_area">
     <div class="bg-box">
-      <img src="{{asset('home/images/hero-bg2.png')}}" alt="">
-      <img src="{{asset('home/images/cbg.png')}}" class="gone1" alt="" style="position: absolute;right: 0;top: 0;display: block;height: 400px;width: 400px;margin-right:20px;margin-top:20px;">
+      <img src="{{asset('home/images/hero-bg.jpg')}}" alt="background picture">
 
     </div>
     @include('home.header') <!-- include header file -->

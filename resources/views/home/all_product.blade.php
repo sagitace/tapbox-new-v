@@ -2,10 +2,13 @@
 <html>
 
 <head>
+
 <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />  <!-- Site Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+
+  <!-- Site Metas -->
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
@@ -28,6 +31,42 @@
   <!-- responsive style -->
   <link href="{{asset('home/css/responsive.css')}}" rel="stylesheet" />
 
+  <style>
+    .filterDiv {
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+
+#myBtnContainer{
+  padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;p
+    list-style-type: none;
+    margin: 45px 0 20px 0;
+}
+#myBtnContainer button{
+  padding: 7px 25px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+#myBtnContainer .btn2.active{
+  background-color: #000000;
+    color: #ffffff;
+}
+  </style>
+
 </head>
 
 <body>
@@ -37,8 +76,8 @@
       <img src="{{asset('home/images/hero-bg.jpg')}}" alt="">
     </div>
     @include('home.header') <!-- include header file -->
-<!-- slider section -->
-@include('home.slider')
+    <!-- slider section -->
+    @include('home.slider')
     <!-- end slider section -->
   </div>
 
@@ -48,7 +87,11 @@
 
 
   <!-- food section -->
-    @include('home.product_view')
+
+  @include('home.product_view')
+
+
+
   <!-- end food section -->
 
   <script>
@@ -61,6 +104,79 @@
             localStorage.setItem('scrollpos', window.scrollY);
         };
     </script>
+
+<script>
+  filterSelection("all")
+
+  function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("filterDiv");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+          w3RemoveClass(x[i], "show");
+          if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+  }
+
+  function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {
+              element.className += " " + arr2[i];
+          }
+      }
+  }
+
+  function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+              arr1.splice(arr1.indexOf(arr2[i]), 1);
+          }
+      }
+      element.className = arr1.join(" ");
+  }
+
+  // Add active class to the current button (highlight it)
+  var header = document.getElementById("myBtnContainer");
+        var btns = header.getElementsByClassName("btn2");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                $('.btn2').removeClass('active');
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+                this.className += " active";
+            });
+        }
+</script>
+<script>
+
+$(window).on('load', function () {
+    $('.filters_menu li').click(function () {
+        $('.filters_menu li').removeClass('active');
+        $(this).addClass('active');
+
+        var data = $(this).attr('data-filter');
+        $grid.isotope({
+            filter: data
+        })
+    });
+
+    var $grid = $(".grid").isotope({
+        itemSelector: ".all",
+        percentPosition: false,
+        masonry: {
+            columnWidth: ".all"
+        }
+    })
+});
+</script>
 
   <!-- jQery -->
   <script src="home/js/jquery-3.4.1.min.js"></script>

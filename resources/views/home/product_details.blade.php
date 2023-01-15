@@ -45,6 +45,11 @@
             text-align: center;
         }
     }
+    @media (min-width: 992px){
+        .cart{
+            width: 100% !important;
+        }
+    }
 
   </style>
 </head>
@@ -55,23 +60,39 @@
     <div class="bg-box">
       <img src="{{asset('home/images/crop.jpg')}}" alt="" style="height: 80px;">
     </div>
-    <header class="header_section">
+            <header class="header_section">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
                         <a class="navbar-brand" href="{{url('/')}}" >
                             <span>TAPBox</span>
                         </a>
+                        <div style="text-align:right; width:40%;" class="cart">
+                            <a class="" href="{{url('show_cart')}}" style="float:right; display:block;">
+                            <img src="https://img.icons8.com/ios-glyphs/40/FFFFFF/shopping-cart--v1.png" style="margin-top:5px;" width="26px" height="25px;"/>
+                            <span style="font-weight:bold; color: rgb(255, 255, 255); font-size:12px; ">{{$cart_total}}</span>
+                            </a>
+                    </div>
                     </nav>
+
+
                 </div>
             </header>
 
+            @if(session()->has('message'))
+
+            <div class="alert alert-success">
+
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                {{session()->get('message')}}
+
+            </div>
+
+            @endif
 
 
-        <div class="container d-flex justify-content-center align-items-center" style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; margin-top: 100px; margin-bottom: 100px; position:relative;">
+        <div class="container d-flex justify-content-center align-items-center" style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; margin-top: 100px; margin-bottom: 100px;">
 
-        <img src="{{asset('home/images/c1.png')}}" alt="" style="position: absolute;left: 0;top: 0;display: block;height: 200px;width: 200px;background: url(TRbanner.gif) no-repeat;text-indent: -999em;text-decoration: none; margin-left:-40px;margin-top:-40px;">
 
-        <img src="{{asset('home/images/icons8-gift.gif')}}" alt="" style="position: absolute;right: 0;top: 0;display: block;height: 100px;width: 100px;background: url(TRbanner.gif) no-repeat;text-indent: -999em;text-decoration: none;">
             <diV class="row">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
                     <div class="img-box" style="padding: 30px;">
@@ -95,7 +116,12 @@
                         <h6 style="text-decoration: line-through;padding-bottom: 15px;" class="text-danger">
                              ₱{{$product->price}}
                         </h6>
+                        <?php $discount = (int) (round(($product->discount_price / $product->price) * 100)) - 100?>
+                            <h6 class="text-dark" style=""> <span style="font-weight: bold;">&nbsp;&nbsp;{{$discount}}</span>% </h6>
                     </div>
+
+                    <?php $saved = $product->price - $product->discount_price ?>
+                    <h6 style="padding-bottom: 15px;">This product is<b> {{$product->quantity}}</b>, get it now and save ₱{{$saved}}! </h6>
 
                 @else
 
@@ -103,14 +129,13 @@
                     <b>Price: </b>₱{{$product->price}}
                     </h6>
 
+                <h6 style="padding-bottom: 15px;">This product is<b> {{$product->quantity}}</b>, get it now!</h6>
+
                 @endif
-
-                <h6 style="padding-bottom: 15px;"><b>Available Quantity:</b> {{$product->quantity}}</h6>
-
 
                 <form action="{{url('add_cart',$product->id)}}" method="POST" style="display:flex; padding-bottom: 15px;">
                 @csrf
-                <input type="number" name="quantity" value="0" min="1" max="{{$product->quantity}}" style="width: 60px; color:black;border-radius: 5px 0 0 5px; border: 2px solid #ffbe33;">
+                <input type="number" name="quantity" value="0" min="1" max="20" style="width: 60px; color:black;border-radius: 5px 0 0 5px; border: 2px solid #ffbe33;">
                 <button type="submit" class="btn" style="border-radius: 0 5px 5px 0; font-weight:bold; background:#ffbe33; color:white;">Add To Cart</button>
                 </form>
 

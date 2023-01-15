@@ -25,7 +25,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $product=Product::paginate(6);
+        $product=Product::paginate(12);
         $category = category::all();
         $cart_total = cart::where('user_id',Auth::id())->count();
 
@@ -58,12 +58,11 @@ class HomeController extends Controller
             $total_delivered=order::where('delivery_status','=','delivered')->get()->count();
 
             $total_processing=order::where('delivery_status','=','processing')->get()->count();
-
             return view('admin.home', compact('total_product','total_order','total_user','total_revenue', 'total_delivered','total_processing'));
         }
         else{
 
-            $product=Product::paginate(6);
+            $product=Product::paginate(12);
             $category = category::all();
             $cart_total = cart::where('user_id',Auth::id())->count();
             return view('home.userpage',compact('product','category','cart_total'));
@@ -195,7 +194,7 @@ class HomeController extends Controller
             $order->payment_status='cash on delivery';
             $order->delivery_status='processing';
 
-            $product->quantity=$product->quantity - $data->quantity;
+
 
 if($data->quantity < 3){
                 $order->price = $order->price + 20;
@@ -218,7 +217,9 @@ if($data->quantity < 3){
     }
 
     public function stripe($totalprice){
-        return view('home.stripe', compact('totalprice'));
+        $cart_total = cart::where('user_id',Auth::id())->count();
+
+        return view('home.stripe', compact('totalprice', 'cart_total'));
     }
 
     public function stripePost(Request $request, $totalprice)
@@ -259,8 +260,15 @@ if($data->quantity < 3){
             $order->delivery_status='processing';
             $product->quantity=$product->quantity - $data->quantity;
 
+            if($data->quantity < 3){
+                $order->price = $order->price + 20;
+                $order->save();
+            }
+            else{
+                $order->save();
+            }
             $product->save();
-            $order->save();
+
 
 
             $cart_id=$data->id;
@@ -278,7 +286,8 @@ if($data->quantity < 3){
             $user=Auth::user();
             $userid=$user->id;
             $order=order::where('user_id','=',$userid)->get();
-            return view('home.order', compact('order'));
+            $cart_total = cart::where('user_id',Auth::id())->count();
+            return view('home.order', compact('order', 'cart_total'));
         }
         else{
             return redirect('login');
@@ -305,7 +314,7 @@ if($data->quantity < 3){
     }
 
     public function products(){
-        $product=product::paginate(6);
+        $product=product::paginate(10);
         $category = category::all();
         $cart_total = cart::where('user_id',Auth::id())->count();
 
@@ -318,6 +327,16 @@ if($data->quantity < 3){
         $cart_total = cart::where('user_id',Auth::id())->count();
         $product=product::where('title','LIKE',"%$search%")->orWhere('Category','LIKE',"%$search%")->paginate(6);
         return view('home.all_product', compact('product','category','cart_total'));
+    }
+
+    public function book_now(){
+        if(Auth::id()){
+            Alert::success('Successfully Booked!','We will connect with you soon!');
+            return redirect()->back();
+        }
+        else{
+            return redirect('login');
+        }
     }
 
 }

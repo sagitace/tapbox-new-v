@@ -5,6 +5,7 @@
             <div class="row">
               <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
+                    <a href="{{url('/show_product')}}" style="text-decoration: none; color:white;">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-9">
@@ -15,10 +16,12 @@
                     </div>
                     <h6 class="text-muted font-weight-normal">Total Products</h6>
                   </div>
+                </a>
                 </div>
               </div>
               <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
+                    <a href="{{url('order')}}" style="text-decoration: none; color:white;">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-9">
@@ -29,6 +32,7 @@
                     </div>
                     <h6 class="text-muted font-weight-normal">Total Order</h6>
                   </div>
+                    </a>
                 </div>
               </div>
               <div class="col-xl-3 col-sm-6 grid-margin stretch-card">

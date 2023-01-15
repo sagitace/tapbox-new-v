@@ -174,6 +174,11 @@ ul .listitem:last-child {
         margin-top: 20px;
     }
 }
+@media (min-width: 992px){
+        .cartlogo{
+            width: 100% !important;
+        }
+    }
   </style>
 </head>
 
@@ -182,17 +187,25 @@ ul .listitem:last-child {
   <div class="hero_area">
     <div class="bg-box">
       <img src="{{asset('home/images/crop.jpg')}}" style="height: 80px;" alt="">
-</div>
+    </div>
 
-            <header class="header_section">
-                <div class="container">
-                    <nav class="navbar navbar-expand-lg custom_nav-container ">
-                        <a class="navbar-brand" href="{{url('/')}}">
-                            <span>TAPBox</span>
-                        </a>
-                    </nav>
-                </div>
-            </header>
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="{{url('/')}}" >
+                    <span>TAPBox</span>
+                </a>
+                <div style="text-align:right; width:40%;" class="cartlogo">
+                    <a class="" href="{{url('show_cart')}}" style="float:right; display:block;">
+                    <img src="https://img.icons8.com/ios-glyphs/40/FFFFFF/shopping-cart--v1.png" style="margin-top:5px;" width="26px" height="25px;"/>
+                    <span style="font-weight:bold; color: rgb(255, 255, 255); font-size:12px; ">{{$cart_total}}</span>
+                    </a>
+            </div>
+            </nav>
+
+
+        </div>
+    </header>
 
     <p style="text-align: center; font-size:25px; font-weight:bold; margin-top:30px;">Orders</p>
         <div class="orders">

@@ -491,7 +491,7 @@ a:focus {
     transform: scale(1.1);
 }
 
-.food_section .filters_menu {
+.food_section .container .filters_menu {
     padding: 0;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -505,15 +505,28 @@ a:focus {
     margin: 45px 0 20px 0;
 }
 
-.food_section .filters_menu li {
+.food_section .container .filters_menu li {
     padding: 7px 25px;
     cursor: pointer;
     border-radius: 25px;
 }
 
-.food_section .filters_menu li.active {
+.food_section .container .filters_menu li.active {
     background-color: #222831;
     color: #ffffff;
+}
+
+.food_section a .box {
+    position: relative;
+    margin-top: 25px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 330px;
+    width: 340px;
+    background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
 }
 
 .food_section .box {
@@ -524,6 +537,8 @@ a:focus {
     color: #ffffff;
     border-radius: 15px;
     overflow: hidden;
+    height: 330px;
+    width: 340px;
     background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
 }
 
@@ -538,15 +553,15 @@ a:focus {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    height: 215px;
+    height: 180px;
     border-radius: 0 0 0 45px;
     margin: -1px;
     padding: 25px;
 }
 
 .food_section .box .img-box img {
-    max-width: 100%;
-    max-height: 145px;
+    max-width: 140px;
+    max-height: 140px;
     -webkit-transition: all .2s;
     transition: all .2s;
 }
@@ -1065,6 +1080,12 @@ a:focus {
     .c2 {
         display: none;
     }
+}
+
+.btn2 {
+    border: white;
+    background-color: white;
+    margin-left: 2px;
 }
 
 

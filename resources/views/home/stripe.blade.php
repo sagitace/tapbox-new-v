@@ -41,7 +41,15 @@
     <div class="bg-box">
       <img src="{{asset('home/images/crop.jpg')}}" alt="" style="height: 80px;">
     </div>
-    <span style="font-size:18px;">@include('home.header')</span>
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="{{url('/')}}" >
+                    <span>TAPBox</span>
+                </a>
+            </nav>
+        </div>
+    </header>
      <!-- include header file -->
     <!-- slider section -->
 <div class="container">

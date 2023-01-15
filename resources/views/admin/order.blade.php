@@ -39,83 +39,122 @@
         <div class="main-panel">
           <div class="content-wrapper">
 
-          <h1 class="title_deg">All Orders</h1>
+<div class="card">
+          <h1 class="title_deg mt-4">All Orders</h1>
 
           <div style="display:flex; justify-content:center; align-items:center; padding-bottom:10px; padding-top:10px;">
-            <form action="{{url('search')}}" method="get">
+
+            <form action="{{url('search')}}" method="get" style="display: flex;">
                 @csrf
-                <input type="text" name="search" id="" placeholder="Search product" style="color:black;">
-                <input type="submit" name="" id="" value="Search" class="btn btn-outline-primary">
+                <input type="text" name="search" placeholder="Search order" class="input_color" style=" color:black;border-radius: 5px 0 0 5px; ">
+                <input type="submit" class="btn btn-primary bg-primary" name="submit" value="Search" style="border-radius: 0 5px 5px 0; font-weight:bold; color:white;">
             </form>
+
+
+
           </div>
+          <div class="container">
+            <div class="row">
 
-          <table class="table_deg">
-            <tr class="tr_deg">
-                <th style="padding:10px;">Name</th>
-                <th style="padding:10px;">Email</th>
-                <th style="padding:10px;">Address</th>
-                <th style="padding:10px;">Phone</th>
-                <th style="padding:10px;">Product Name</th>
-                <th style="padding:10px;">Quantity</th>
-                <th style="padding:10px;">Price</th>
-                <th style="padding:10px;">Payment Status</th>
-                <th style="padding:10px;">Delivery Status</th>
-                <th style="padding:10px;">Image</th>
-                <th style="padding:10px;">Delivered</th>
-                <th style="padding:10px;">Receipt</th>
-                <th style="padding:10px;">Send Email</th>
 
-            </tr>
 
-            @forelse($order as $order)
+          <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">List of updated orders</h4>
+                <p class="card-description">
+                </p>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
 
-            <tr>
 
-                <td>{{$order->name}}</td>
-                <td>{{$order->email}}</td>
-                <td>{{$order->address}}</td>
-                <td>{{$order->phone}}</td>
-                <td>{{$order->product_title}}</td>
-                <td>{{$order->quantity}}</td>
-                <td>₱{{$order->price}}</td>
-                <td>{{$order->payment_status}}</td>
-                <td>{{$order->delivery_status}}</td>
-                <td>
-                    <img src="/product/{{$order->image}}" alt="image" height="100px" width="100px">
-                </td>
-                <td>
-                    @if($order->delivery_status=='processing')
 
-                    <a href="{{url('delivered',$order->id)}}" class="btn btn-primary" onclick="return confirm('Are you sure this product is delivered?')">Delivered</a>
 
-                    @elseif($order->delivery_status=='delivered')
 
-                    <p style="color:green">Delivered</p>
+                      <tr>
+                        <th> Name </th>
+                        <th> Email </th>
+                        <th> Address </th>
+                        <th> Phone </th>
+                        <th> Product </th>
+                        <th> Image </th>
+                        <th> Quantity </th>
+                        <th> Price </th>
+                        <th> Payment Status </th>
+                        <th> Delivery Status </th>
+                        <th> Delivered </th>
+                        <th> Receipt </th>
+                        <th> Feedback </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($order as $order)
 
-                    @elseif($order->delivery_status=='cancelled')
-                    <p style="color:red">Cancelled</p>
+                        <tr>
 
-                    @endif
-                </td>
-                <td>
-                    <a href="{{url('print',$order->id)}}" class="btn btn-secondary">Print</a>
-                </td>
+                            <td>{{$order->name}}</td>
+                            <td>{{$order->email}}</td>
+                            <td>{{$order->address}}</td>
+                            <td>{{$order->phone}}</td>
+                            <td>{{$order->product_title}}</td>
+                            <td>
+                                <img src="/product/{{$order->image}}" alt="image" height="100px" width="100px">
+                            </td>
 
-                <td>
-                    <a href="{{url('send_email',$order->id)}}" class="btn btn-info">Send</a>
-                </td>
+                            <td>{{$order->quantity}}</td>
 
-            </tr>
+                            <td>₱{{$order->price}}</td>
+                            <td>{{$order->payment_status}}</td>
+                            <td>{{$order->delivery_status}}</td>
 
-            @empty
-            <tr>
-                <td colspan="16" style="padding:10px; font-weight: bold;">
-                    No Data Found
-                </td>
-            </tr>
-            @endforelse
+                            <td>
+                                @if($order->delivery_status=='processing')
 
-          </table>
+                               <a href="{{url('delivered',$order->id)}}" onclick="return confirm('Are you sure this product is delivered?')"> <button type="button" class="btn btn-warning bg-warning btn-icon-text">
+                                    <i class="mdi mdi-file-check btn-icon-prepend"></i> Delivered </button></a>
+
+
+                                @elseif($order->delivery_status=='delivered')
+
+                                <p style="color:green">Delivered</p>
+
+                                @elseif($order->delivery_status=='cancelled')
+                                <p style="color:red">Cancelled</p>
+
+                                @endif
+                            </td>
+                            <td>
+
+                                <a href="{{url('print',$order->id)}}" type="button" class="btn btn-info btn-icon-text bg-info"> Print <i class="mdi mdi-printer btn-icon-append"></i>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a href="{{url('send_email',$order->id)}}" class="btn btn-success bg-success">Send</a>
+                            </td>
+
+                        </tr>
+
+                        @empty
+                        <tr>
+                            <td colspan="16" style="padding:10px; font-weight: bold;" class="text-center">
+                                No Data Found
+                            </td>
+                        </tr>
+                        @endforelse
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+
 
           </div>
         </div>

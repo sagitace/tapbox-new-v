@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
 use PDF;
+use App\Models\User;
 use Notification;
 use App\Notifications\SendEmailNotification;
 
@@ -70,7 +71,9 @@ class AdminController extends Controller
 
     public function show_product(){
         $product=product::all();
-        return view('admin.show_product', compact('product'));
+        $total_product=product::all()->count();
+
+        return view('admin.show_product', compact('product','total_product'));
     }
 
     public function delete_product($id){
@@ -166,5 +169,10 @@ class AdminController extends Controller
         $search=$request->search;
         $order=order::where('name','LIKE',"%$search%")->orWhere('phone','LIKE',"%$search%")->orWhere('product_title','LIKE',"%$search%")->orWhere('name','LIKE',"%$search%")->orWhere('email','LIKE',"%$search%")->orWhere('address','LIKE',"%$search%")->orWhere('payment_status','LIKE',"%$search%")->orWhere('delivery_status','LIKE',"%$search%")->get();
         return view('admin.order',compact('order'));
+    }
+
+    public function customer(Request $request){
+        $total_user=user::all()->count();
+        return view('admin.customer',compact('total_user'));
     }
 }

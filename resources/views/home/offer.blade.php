@@ -4,28 +4,22 @@
       <div class="container ">
         <div class="row">
           <div class="col-md-6  ">
-            <div class="box" style="position:relative;">
+            <div class="box">
               <div class="img-box">
                 <img src="home/images/white-almond-latte.png" alt="">
               </div>
               <div class="detail-box" >
-
-
-
-                <h5>
+                 <h5>
                   Christmas Sale!
                 </h5>
                 <h6>
                   Up to <span>20%</span> Off
                 </h6>
-
-
               </div>
-              <img src="{{asset('home/images/c2.png')}}" class="c2">
             </div>
           </div>
           <div class="col-md-6  ">
-            <div class="box " style="position: relative;">
+            <div class="box ">
               <div class="img-box">
                 <img src="home/images/cheesy-nachos.png" alt="" style="margin-top: -30px;">
               </div>
@@ -38,11 +32,11 @@
                 </h6>
 
               </div>
-              <img src="{{asset('home/images/c2.png')}}" class="c2">
+
             </div>
           </div>
           <div class="col-md-6  ">
-            <div class="box " style="position: relative;">
+            <div class="box " >
               <div class="img-box">
                 <img src="home/images/c3.png" alt="">
               </div>
@@ -55,11 +49,11 @@
                 </h6>
 
               </div>
-              <img src="{{asset('home/images/c2.png')}}" class="c2">
+
             </div>
           </div>
           <div class="col-md-6">
-            <div class="box " style="position: relative;">
+            <div class="box ">
               <div class="img-box">
                 <img src="{{asset('home/images/c4.png')}}" style="margin-top:10px;" alt="">
               </div>
@@ -72,7 +66,7 @@
                 </h6>
 
               </div>
-              <img src="{{asset('home/images/c2.png')}}" class="c2">
+
             </div>
           </div>
         </div>
