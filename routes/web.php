@@ -62,6 +62,16 @@ route::get('/search', [AdminController::class,'searchdata']);
 
 route::get('/customer', [AdminController::class,'customer']);
 
+route::get('/admin_account', [AdminController::class,'admin_account']);
+
+route::get('/customer_account', [AdminController::class,'customer_account']);
+
+route::get('/delivered', [AdminController::class,'isdelivered']);
+
+route::get('/processing', [AdminController::class,'processing']);
+
+route::get('/detailed_orders', [AdminController::class,'detailed_orders']);
+
 
 // Home Controller
 

@@ -62,10 +62,10 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">List of updated orders</h4>
-                <p class="card-description">
+                <p class="card-description" style="margin-top: -10px; margin-bottom: 5px;"><a href="{{url('detailed_orders')}}" style="text-decoration: underline; color: blue;">view</a> detailed orders
                 </p>
                 <div class="table-responsive">
-                  <table class="table table-striped">
+                  <table class="table table-striped table-bordered">
                     <thead>
 
 
@@ -74,15 +74,10 @@
 
                       <tr>
                         <th> Name </th>
-                        <th> Email </th>
-                        <th> Address </th>
-                        <th> Phone </th>
                         <th> Product </th>
                         <th> Image </th>
                         <th> Quantity </th>
                         <th> Price </th>
-                        <th> Payment Status </th>
-                        <th> Delivery Status </th>
                         <th> Delivered </th>
                         <th> Receipt </th>
                         <th> Feedback </th>
@@ -94,9 +89,7 @@
                         <tr>
 
                             <td>{{$order->name}}</td>
-                            <td>{{$order->email}}</td>
-                            <td>{{$order->address}}</td>
-                            <td>{{$order->phone}}</td>
+
                             <td>{{$order->product_title}}</td>
                             <td>
                                 <img src="/product/{{$order->image}}" alt="image" height="100px" width="100px">
@@ -105,8 +98,6 @@
                             <td>{{$order->quantity}}</td>
 
                             <td>₱{{$order->price}}</td>
-                            <td>{{$order->payment_status}}</td>
-                            <td>{{$order->delivery_status}}</td>
 
                             <td>
                                 @if($order->delivery_status=='processing')

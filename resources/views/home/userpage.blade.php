@@ -54,6 +54,7 @@
   <!-- end offer section -->
 
   <!-- food section -->
+
     @include('home.product')
   <!-- end food section -->
 

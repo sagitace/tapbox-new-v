@@ -1,8 +1,8 @@
 <section class="food_section layout_padding-bottom">
-
     <div class="container" >
-        <div class="heading_container heading_center">
-            <h2>Our Menu</h2>
+
+      <div class="heading_container heading_center">
+        <h2>Our Menu</h2>
 
             <br>
 
@@ -13,43 +13,47 @@
                 </form>
             </div>
 
-        </div>
+      </div>
 
-      @if(session()->has('message'))
+        @if(session()->has('message'))
 
-        <div class="alert alert-success">
+            <div class="alert alert-success">
 
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-            {{session()->get('message')}}
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                    {{session()->get('message')}}
 
-        </div>
+            </div>
 
         @endif
 
 
+        <div id="myBtnContainer">
+            <button class="btn2 actived" onclick="filterSelection('all')"> All</button>
 
-        <ul class="filters_menu">
-            <li class="active" data-filter="*">All</li>
             @foreach($category as $category)
 
-            @if($category->category_name == "Iced_Coffee")
-            <li data-filter=".{{$category->category_name}}">Iced Coffee</li>
+            @if($category->category_name=='Iced_Coffee')
+                <button class="btn2" onclick="filterSelection('{{$category->category_name}}')"> Iced Coffee</button>
+
             @else
-            <li data-filter=".{{$category->category_name}}">{{$category->category_name}}</li>
+                <button class="btn2" onclick="filterSelection('{{$category->category_name}}')"> {{$category->category_name}}</button>
             @endif
 
             @endforeach
-          </ul>
+
+        </div>
 
 
-      <div class="filters-content">
-        <div class="row grid d-flex">
 
-            @foreach($product as $products)
-            @if($products->quantity == "Available")
+        <div class="filters-content">
+            <div class="row grid d-flex" >
+
+                @foreach($product as $products)
+
+                @if($products->quantity == "Available")
 <a href="{{url('product_details',$products->id)}}" style="z-index: 1;" class="btn3">
 
-          <div class="col-sm-6 col-lg-4 all {{$products->category}}">
+          <div class="col-sm-6 col-lg-4 filterDiv {{$products->category}}">
             <div class="box">
               <div>
                 <div class="img-box">
@@ -72,12 +76,12 @@
                     <h6 style="text-decoration: line-through; " class="text-danger">
                         ₱{{$products->price}}
                     </h6>
-                    <?php $discount = (($products->discount_price / $products->price) * 100) - 100?>
+                    <?php $discount =(int) (round(($products->discount_price / $products->price) * 100)) - 100?>
                     <h6 class="text-light" style=""> <span style="font-weight: bold;">&nbsp;&nbsp;{{$discount}}</span>% </h6>
                 </div>
 
                 <?php $saved = $products->price - $products->discount_price ?>
-                <h6 class="text-success" style="font-size: 20px; font-weight: bold;">&nbsp; Save ₱{{$saved}} now!</h6>
+                <h6 class="text-success" style="font-size: 20px; font-weight: bold;">&nbsp; Save ₱{{$saved}}!</h6>
 
                 @else
 
@@ -90,7 +94,7 @@
                   </div>
             <div style="margin: 15px 0;">
 
-                <h6 >Product is now <span style="font-weight: bold;"class="text-warning">{{$products->quantity}} </span>get it now!</h6>
+                <h6 >Product is <span style="font-weight: bold;"class="text-warning">{{$products->quantity}}</span>!</h6>
 
             </div>
 
@@ -138,7 +142,7 @@
                   </div>
             <div style="margin: 10px 0">
 
-                <h5 class="text-danger" style="font-size: 12px;">Sorry, this product is out of stock. Please choose another item, have a blast!</h5>
+                <h5 class="text-danger" style="font-size: 15px;">OUT OF STOCK!</h5>
 
             </div>
                 </div>
@@ -147,14 +151,12 @@
           </div>
 
           @endif
+                @endforeach
 
+            </div>
 
-        @endforeach
-
+            <span style="margin: 500px;">{!!$product->withQueryString()->links('pagination::bootstrap-5')!!}</span>
+        </div>
     </div>
-
-    <span style="margin: 500px;">
-            {!!$product->withQueryString()->links('pagination::bootstrap-5')!!}
-        </span>
-  </section>
+</section>
 

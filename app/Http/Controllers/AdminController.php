@@ -172,7 +172,30 @@ class AdminController extends Controller
     }
 
     public function customer(Request $request){
-        $total_user=user::all()->count();
-        return view('admin.customer',compact('total_user'));
+
+        return view('admin.customer');
+    }
+    public function admin_account(Request $request){
+        $user=user::all();
+        return view('admin.admin_account',compact('user'));
+    }
+    public function customer_account(Request $request){
+        $user=user::all();
+        return view('admin.customer_account',compact('user'));
+    }
+
+    public function isdelivered(Request $request){
+        $order=order::all();
+        return view('admin.delivered',compact('order'));
+    }
+
+    public function processing(Request $request){
+        $order=order::all();
+        return view('admin.processing', compact('order'));
+    }
+
+    public function detailed_orders(Request $request){
+        $order=order::all();
+        return view('admin.detailed_orders', compact('order'));
     }
 }

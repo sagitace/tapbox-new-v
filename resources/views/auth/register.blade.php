@@ -1,9 +1,9 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img src="{{asset('home/images/favicon.png')}}"/>
         </x-slot>
-
+        <h4 style="margin:10px 0; text-align:center; font-weight: bold;">Create New Account</h4>
         <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('register') }}">

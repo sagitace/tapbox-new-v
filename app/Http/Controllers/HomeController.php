@@ -314,7 +314,7 @@ if($data->quantity < 3){
     }
 
     public function products(){
-        $product=product::paginate(10);
+        $product=product::paginate(24);
         $category = category::all();
         $cart_total = cart::where('user_id',Auth::id())->count();
 

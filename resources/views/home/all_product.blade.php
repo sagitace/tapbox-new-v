@@ -2,13 +2,10 @@
 <html>
 
 <head>
-
 <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
-
-  <!-- Site Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />  <!-- Site Metas -->
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
@@ -31,8 +28,11 @@
   <!-- responsive style -->
   <link href="{{asset('home/css/responsive.css')}}" rel="stylesheet" />
 
-  <style>
-    .filterDiv {
+
+
+<style>
+
+.filterDiv {
   display: none; /* Hidden by default */
 }
 
@@ -51,7 +51,7 @@
     flex-wrap: wrap;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;p
+    justify-content: center;
     list-style-type: none;
     margin: 45px 0 20px 0;
 }
@@ -59,13 +59,25 @@
   padding: 7px 25px;
     cursor: pointer;
     border-radius: 25px;
+    border: none;
+    background-color: rgb(0,0,0,0);
 }
 
-#myBtnContainer .btn2.active{
+#myBtnContainer .btn2.actived{
   background-color: #000000;
     color: #ffffff;
 }
-  </style>
+
+.gone1{
+    opacity:0.5;
+}
+    @media(max-width: 1000px){
+        .gone1{
+            opacity: 0;
+        }
+    }
+
+</style>
 
 </head>
 
@@ -87,11 +99,7 @@
 
 
   <!-- food section -->
-
-  @include('home.product_view')
-
-
-
+    @include('home.product_view')
   <!-- end food section -->
 
   <script>
@@ -146,36 +154,14 @@
         var btns = header.getElementsByClassName("btn2");
         for (var i = 0; i < btns.length; i++) {
             btns[i].addEventListener("click", function() {
-                var current = document.getElementsByClassName("active");
-                $('.btn2').removeClass('active');
+                var current = document.getElementsByClassName("actived");
+                $('.btn2').removeClass('actived');
                 if (current.length > 0) {
-                    current[0].className = current[0].className.replace(" active", "");
+                    current[0].className = current[0].className.replace(" actived", "");
                 }
-                this.className += " active";
+                this.className += " actived";
             });
         }
-</script>
-<script>
-
-$(window).on('load', function () {
-    $('.filters_menu li').click(function () {
-        $('.filters_menu li').removeClass('active');
-        $(this).addClass('active');
-
-        var data = $(this).attr('data-filter');
-        $grid.isotope({
-            filter: data
-        })
-    });
-
-    var $grid = $(".grid").isotope({
-        itemSelector: ".all",
-        percentPosition: false,
-        masonry: {
-            columnWidth: ".all"
-        }
-    })
-});
 </script>
 
   <!-- jQery -->
@@ -197,7 +183,6 @@ $(window).on('load', function () {
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
-  <!-- End Google Map -->
 
 </body>
 

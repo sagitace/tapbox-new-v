@@ -42,15 +42,23 @@
         </a>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="{{url('order')}}">
-          <span class="menu-icon">
-            <i class="mdi mdi-playlist-play"></i>
-          </span>
-          <span class="menu-title">Orders</span>
-        </a>
+        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="ui-basic">
+            <span class="menu-icon">
+              <i class="mdi mdi-playlist-play"></i>
+            </span>
+            <span class="menu-title">Orders</span>
+            <i class="menu-arrow"></i>
+          </a>
+        <div class="collapse" id="auth">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{url('order')}}">All Orders</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{url('delivered')}}">Delivered Orders</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{url('processing')}}">Processing Orders</a></li>
+            </ul>
+          </div>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="pages/charts/chartjs.html">
+        <a class="nav-link" href="#">
           <span class="menu-icon">
             <i class="mdi mdi-chart-bar"></i>
           </span>
@@ -62,7 +70,7 @@
           <span class="menu-icon">
             <i class="mdi mdi-contacts"></i>
           </span>
-          <span class="menu-title">Customers</span>
+          <span class="menu-title">Users</span>
         </a>
       </li>
 

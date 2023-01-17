@@ -77,7 +77,7 @@
                 </div>
 
                 <?php $saved = $products->price - $products->discount_price ?>
-                <h6 class="text-success" style="font-size: 20px; font-weight: bold;">&nbsp; Save ₱{{$saved}} now!</h6>
+                <h6 class="text-success" style="font-size: 20px; font-weight: bold;">&nbsp; Save ₱{{$saved}}!</h6>
 
                 @else
 
@@ -90,7 +90,7 @@
                   </div>
             <div style="margin: 15px 0;">
 
-                <h6 >Product is <span style="font-weight: bold;"class="text-warning">{{$products->quantity}}</span>!</h6>
+                <h6 ><span style="font-weight: bold;"class="text-warning">{{$products->quantity}}</span> now!</h6>
 
             </div>
 
