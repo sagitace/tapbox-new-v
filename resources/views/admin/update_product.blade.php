@@ -80,8 +80,6 @@
                                   <input type="number" name="price" value="{{$product->price}}" class="form-control text-dark" placeholder="Enter product price" min="1" required=""/>
                                 </div>
                               </div>
-
-
                           </div>
                           <div class="col-12">
 
@@ -91,11 +89,8 @@
                                   <input type="number" name="discount" value="{{$product->discount_price}}" class="form-control text-dark" min="1" placeholder="Enter product discounted price"/>
                                 </div>
                               </div>
-
                           </div>
                           <div class="col-12">
-
-
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Category</label>
                                 <div class="col-sm-8">

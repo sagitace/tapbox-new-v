@@ -51,6 +51,9 @@
         }
     }
 
+    h3{
+        color: white;
+    }
   </style>
 </head>
 
@@ -90,6 +93,70 @@
             @endif
 
 
+
+            <div class="container" style="margin-top: 100px;">
+                <div style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;background-image: linear-gradient(to right, #222831, #3e494a);">
+                <div class="row">
+                    <div class="col-md-5 d-flex justify-content-center align-items-center bg-light" style="padding:50px">
+                        <img src="/product/{{$product->image}}" alt="" width="325px" height="350px">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="row" style="padding: 50px 20px">
+                            <div class="col-12" style="display: flex;">
+                                <h3 style="font-weight: 800; font-size:40px;">{{$product->title}}</h3>
+                                <div style="height: 100%;display: flex;justify-content:center; align-items:center;">
+                                    <p style=" margin-left: 10px; border-radius: 20px; font-size: 12px; padding:5px; font-weight:700; color:rgb(60, 52, 52)" class="bg-warning">{{$product->category}}</p>
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                @if($product->discount_price!=null)
+                                    <div style="display: flex;">
+                                        <h6 style="font-weight:600; padding-bottom: 15px; color:white; margin-top:15px;">
+                                            Price: ₱{{$product->discount_price}} &nbsp;
+                                        </h6>
+
+                                        <h6 style="text-decoration: line-through;padding-bottom: 15px;margin-top:15px;" class="text-danger">
+                                            ₱{{$product->price}}
+                                        </h6>
+                                         <?php $discount = (int) (round(($product->discount_price / $product->price) * 100)) - 100?>
+                                        <h6 class="text-light" style="margin-top:15px;"> <span style="font-weight: 600;">&nbsp;&nbsp;{{$discount}}</span>% </h6>
+                                    </div>
+
+                                    <?php $saved = $product->price - $product->discount_price ?>
+
+
+                                @else
+
+                                    <h6 style="font-weight:600;padding-bottom: 15px; color:white;
+                                    margin-top:15px;">
+                                    Price: ₱{{$product->price}}
+                                    </h6>
+                                @endif
+                            </div>
+                            <div class="col-12">
+                                <p style="font-size: 15px; color:white">{{$product->description}}</p>
+                            </div>
+                            <div class="col-12">
+                                <form action="{{url('add_cart',$product->id)}}" method="POST" style="display:flex; padding-bottom: 15px; margin-top:20px;">
+                                    @csrf
+                                    <input type="number" name="quantity" value="0" min="1" max="20" style="width: 60px; color:black;border-radius: 5px 0 0 5px; border: 1px solid #ffbe33;">
+                                    <button type="submit" class="btn" style="border-radius: 0 5px 5px 0; font-weight:bold; background:#ffbe33; color:white;">Add To Cart</button>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+
+
+
+<!--
         <div class="container d-flex justify-content-center align-items-center" style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; margin-top: 100px; margin-bottom: 100px;">
 
 
@@ -143,7 +210,7 @@
             </div>
             </diV>
         </div>
-
+    -->
 
 
 
