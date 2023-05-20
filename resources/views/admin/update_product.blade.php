@@ -94,7 +94,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Category</label>
                                 <div class="col-sm-8">
-                                  <select class="form-control text-white" required="">
+                                  <select class="form-control text-white" name="category" required="">
                                     <option value="{{$product->category}}" class="text-muted" selected="">{{$product->category}}</option>
 
                                     @foreach($category as $category)
@@ -122,7 +122,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Change Image</label>
                                 <div class="col-sm-8">
-                                    <input type="file" name="image" class="form-control text-secondary"  required=""/>
+                                    <input type="file" name="image" class="form-control text-secondary" vaalue="/product/{{$product->image}}" required=""/>
                                 </div>
                               </div>
                           </div>
@@ -161,7 +161,7 @@
                                 <label for="exampleTextarea1" class="col-sm-4 col-form-label">Description</label>
 
                                 <div class="col-sm-8">
-                                <textarea class="form-control text-secondary" id="exampleTextarea1" rows="4" style="width: 100%" name="description"  placeholder="Product Details..." value="{{$product->description}}" required=""></textarea>
+                                <textarea class="form-control text-secondary" id="exampleTextarea1" rows="4" style="width: 100%" name="description"  placeholder="Product Details..." value="aaron" required=""></textarea>
                                 </div>
                             </div>
                             </div>

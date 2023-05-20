@@ -42,12 +42,12 @@
             </li>
             @else
             <li class="nav-item ml-2">
-                <a href="{{ route('login') }}" class="btn btn-primary" id="logincss">
+                <a href="{{ route('login') }}" class="btn btn-outline-light" id="logincss">
                         Login
                 </a>
             </li>
             <li class="nav-item">
-                 <a href="{{ route('register') }}" class="btn btn-success">
+                 <a href="{{ route('register') }}" class="btn btn-warning">
                         Register
                 </a>
             </li>
