@@ -64,5 +64,15 @@
                 </x-jet-button>
             </div>
         </form>
+        <div class="text-gray-600 mt-3" style="display: flex !important; justify-content:center !important; align-items: center !important;">
+            <span>----------------------</span> &nbsp;&nbsp;&nbsp; OR &nbsp;&nbsp;&nbsp; <span>----------------------</span>
+        </div>
+
+        <div>
+            <a href="{{ url('auth/facebook') }}" style="margin-top: 0px !important;background: green;color: #ffffff;padding: 5px;border-radius:7px;" class="ml-2">
+                <strong>Facebook</strong>
+              </a>
+            <a href="">Google</a>
+        </div>
     </x-jet-authentication-card>
 </x-guest-layout>

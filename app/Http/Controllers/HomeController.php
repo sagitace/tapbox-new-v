@@ -258,7 +258,6 @@ if($data->quantity < 3){
 
             $order->payment_status='Paid';
             $order->delivery_status='processing';
-            $product->quantity=$product->quantity - $data->quantity;
 
             if($data->quantity < 3){
                 $order->price = $order->price + 20;
@@ -297,7 +296,6 @@ if($data->quantity < 3){
     public function cancel_order($id){
         $order=order::find($id);
         $product=product::find($order->Product_id);
-        $product->quantity=$product->quantity + $order->quantity;
         $order->delivery_status='cancelled';
         $product->save();
         $order->save();

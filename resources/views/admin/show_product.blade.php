@@ -84,7 +84,7 @@
 
 
                                     <td>
-                                      <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this product?')" href="{{url('delete_product', $product->id)}}">Archive</a>
+                                      <a class="btn btn-danger" onclick="return confirm('Are you sure to delete this product?')" href="{{url('delete_product', $product->id)}}">Delete</a>
                                     </td>
 
                                     <td>

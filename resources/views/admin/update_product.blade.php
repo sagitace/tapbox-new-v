@@ -99,7 +99,9 @@
 
                                     @foreach($category as $category)
 
-                                  <option class="text-white" value="{{$category->category_name}}">{{$category->category_name}}</option>
+                                    <option class="text-white" value="{{ $category->category_name }}" {{ $product->category == $category->category_name ? 'selected' : '' }}>
+                                        {{ $category->category_name }}
+                                    </option>
 
                                   @endforeach
                                   </select>
@@ -122,7 +124,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Change Image</label>
                                 <div class="col-sm-8">
-                                    <input type="file" name="image" class="form-control text-secondary" vaalue="/product/{{$product->image}}" required=""/>
+                                    <input type="file" name="image" class="form-control text-secondary" />
                                 </div>
                               </div>
                           </div>
@@ -158,13 +160,12 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-group row">
-                                <label for="exampleTextarea1" class="col-sm-4 col-form-label">Description</label>
-
-                                <div class="col-sm-8">
-                                <textarea class="form-control text-secondary" id="exampleTextarea1" rows="4" style="width: 100%" name="description"  placeholder="Product Details..." value="aaron" required=""></textarea>
+                                  <label for="exampleTextarea1" class="col-sm-4 col-form-label">Description</label>
+                                  <div class="col-sm-8">
+                                    <textarea class="form-control text-secondary" id="exampleTextarea1" rows="4" style="width: 100%" name="description" placeholder="Product Details..." required="">{{$product->description}}</textarea>
+                                  </div>
                                 </div>
-                            </div>
-                            </div>
+                              </div>
                         </div>
                           <div class="col-12">
                             <div style="width: 100%;">
@@ -179,69 +180,6 @@
 
             </div>
 
-            <!--
-
-            <div class="div_design">
-                <label for="">Product Name: </label>
-                <input class="text_color" type="text" name="title" placeholder="Write a name" required="" >
-            </div>
-
-            <div class="div_design">
-                <label for="">Product Description: </label>
-                <input class="text_color" type="text" name="description" placeholder="Write a description" required="" ">
-            </div>
-
-            <div class="div_design">
-                <label for="">Product Price: </label>
-                <input class="text_color" type="number" name="price" placeholder="Write the price" required="" ">
-            </div>
-
-            <div class="div_design">
-                <label for="">Price Discount: </label>
-                <input class="text_color" min="1" type="number" name="discount" placeholder="Write price discount" >
-            </div>
-
-            <div class="div_design">
-                <label for="">Product availability: </label>
-                <select name="quantity" id="" class="text_color" required="">
-                    <option value="Available">Available</option>
-                    <option value="Not_Available">Not Available</option>
-                </select>
-            </div>
-
-            <div class="div_design">
-                <label for="">Product Category: </label>
-                <select class="text_color" name="category" id="" required="">
-
-
-
-
-                </select>
-            </div>
-
-
-            <div class="div_design">
-
-            </div>
-
-
-            <div class="div_design">
-                <label for="">Change product image: </label>
-                <input class="text_color" type="file" name="image">
-            </div>
-
-            <div class="div_design">
-
-                <input type="submit" value="Update Product" class="btn btn-primary">
-            </div>
-
-            </form>
-
-          </div>
-          </div>
-        </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
    @include('admin.script')
     <!-- End custom js for this page -->
   </body>

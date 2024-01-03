@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\FacebookSocialiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,3 +101,5 @@ route::get('/search_product', [HomeController::class,'search_product']);
 
 route::get('/book_now', [HomeController::class,'book_now']);
 
+Route::get('/auth/facebook', [FacebookSocialiteController::class,'redirectToFB']);
+Route::get('/auth/facebook/callback', [FacebookSocialiteController::class,'handleFacebookCallback']);
